@@ -25,13 +25,11 @@ squared([H1|T1], [H2|T2]) :-
 game(Board, GameCheck) :-
     board(Board),
 	max_list(Board, 2048),
-	GameCheck is "You win!",
-	abort.
+	GameCheck = "You win!".
 game(Board, GameCheck) :-
     board(Board),
 	noMoreMoves(Board),
-	GameCheck is "You lose",
-	abort.
+	GameCheck = "You lose".
 
 % game(Board) :-
 %    board(Board),
