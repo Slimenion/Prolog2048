@@ -18,12 +18,11 @@ def move_up():
     prolog.retractall('board(_)')
     prolog.assertz(f'board({board})')
     check_quit = check_lose_or_win()
-    if check_quit == "You win!" or check_quit == "You lose":
-        return check_quit
-    else:
+    if check_quit is None:
         update_desk()
         return True
-
+    else:
+        return check_quit
 
 def move_left():
     global board
