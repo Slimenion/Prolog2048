@@ -1,34 +1,35 @@
-from pyswip import Prolog
+import prolog as pl
 import tkinter as tk
-from contextlib import redirect_stdout
 
+bg_color = '#FBF8EF'
 
-class TextWrapper:
-    text_field: tk.Text
+pl.generate_board()
+print(pl.board)
+pl.move_up()
+print(pl.board)
+pl.move_left()
+print(pl.board)
+pl.move_right()
+print(pl.board)
+pl.move_down()
+print(pl.board)
 
-    def __init__(self, text_field: tk.Text):
-        self.text_field = text_field
+# icon_2048 = tk.PhotoImage(file='2048_icon.png')
 
-    def write(self, text: str):
-        self.text_field.insert(tk.END, text)
+#  Описываем появление окна
+win = tk.Tk()
 
-    def flush(self):
-        self.text_field.update()
+label_1 = tk.Label(
+    win,
+    text="Hello world!",
+    bg=bg_color
+)
+label_1.pack()
+# win.iconphoto(False, icon_2048)
+win.title('2048')
+win.geometry('500x600')
+win.resizable(False, False)
 
+win.config(bg=bg_color)
 
-root = tk.Tk()
-
-text = tk.Text(root)
-text.pack()
-
-prolog = Prolog()
-prolog.consult("2048.pl")
-
-with redirect_stdout(TextWrapper(text)):  # подменяем объект sys.stdout на свой объект
-    print("Slime")
-    print(list(prolog.query("play.")))
-    # print(list(prolog.query("showBoard(Board).")))# print внутри вызывает метод write объекта sys.stdout
-    print("Hello again")  # Вывод в консоль
-
-root.mainloop()
-
+win.mainloop()

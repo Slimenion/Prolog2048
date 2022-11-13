@@ -13,6 +13,7 @@ play :-
 	game(Board).
 
 boardScore(Board, Score) :-
+    board(Board),
 	squared(Board, Squared),
 	sum_list(Squared, Score).
 
@@ -21,24 +22,28 @@ squared([H1|T1], [H2|T2]) :-
 	H2 is H1 * H1,
 	squared(T1,T2).
 
-game(Board) :-
+game(Board, GameCheck) :-
+    board(Board),
 	max_list(Board, 2048),
-	nl,write('You win!'),nl,
+	GameCheck is "You win!",
 	abort.
-game(Board) :-
+game(Board, GameCheck) :-
+    board(Board),
 	noMoreMoves(Board),
-	nl,write('You lose. :('),nl,
+	GameCheck is "You lose",
 	abort.
 
-game(Board) :-
-	nl,write('Your move? '),
-	get_single_char(X),
-	move(Board, X, B),
-	(equal(Board, B) ->
-		(write('Cant move that way.'),nl,game(Board)) ;
-		(addNew(B,NewBoard),showBoard(NewBoard),game(NewBoard))).
+% game(Board) :-
+%    board(Board),
+%	nl,write('Your move? '),
+%	get_single_char(X),
+%	move(Board, X, B),
+%	(equal(Board, B) ->
+%		(write('Cant move that way.'),nl,game(Board)) ;
+%		(addNew(B,NewBoard),showBoard(NewBoard),game(NewBoard))).
 
 noMoreMoves(Board) :-
+    board(Board),
 	once(moveLeft(Board, X)),
 	equal(Board, X),
 	once(moveRight(Board, Y)),
@@ -54,43 +59,54 @@ equal([H1|T1],[H2|T2]) :-
 	equal(T1,T2).
 
 move(Board, 119, NewBoard) :-
+    board(Board),
 	write('up'),nl,nl,
 	once(moveUp(Board, NewBoard)).
 move(Board, 107, NewBoard) :-
+    board(Board),
 	write('up'),nl,nl,
 	once(moveUp(Board, NewBoard)).
 
 move(Board, 115, NewBoard) :-
+    board(Board),
 	write('down'),nl,nl,
 	once(moveDown(Board, NewBoard)).
 move(Board, 106, NewBoard) :-
+    board(Board),
 	write('down'),nl,nl,
 	once(moveDown(Board, NewBoard)).
 
 move(Board, 97, NewBoard) :-
+    board(Board),
 	write('left'),nl,nl,
 	once(moveLeft(Board, NewBoard)).
 move(Board, 104, NewBoard) :-
+    board(Board),
 	write('left'),nl,nl,
 	once(moveLeft(Board, NewBoard)).
 
 move(Board, 100, NewBoard) :-
+    board(Board),
 	write('right'),nl,nl,
 	once(moveRight(Board, NewBoard)).
 move(Board, 108, NewBoard) :-
+    board(Board),
 	write('right'),nl,nl,
 	once(moveRight(Board, NewBoard)).
 
 move(_, 113, _) :-
+    board(Board),
 	write('quit'),nl,nl,
 	write('Bye...'), nl,nl,
 	abort.
 
 move(Board, 98, _) :-
+    board(Board),
 	write('show board'),nl,
 	showBoard(Board), game(Board).
 
 move(Board, _, _) :-
+    board(Board),
 	nl,write('Illegal move! Press ? for help.'),nl,
 	game(Board).
 
@@ -135,16 +151,19 @@ rotateLeft([A1,A2,A3,A4,B1,B2,B3,B4,C1,C2,C3,C4,D1,D2,D3,D4],[E1,E2,E3,E4,F1,F2,
 	H4 is D1.
 
 moveUp(Board, NewBoard):-
+    board(Board),
 	rotateLeft(Board, Temp1),
 	moveLeft(Temp1, Temp2),
 	rotateRight(Temp2, NewBoard).
 
 moveDown(Board, NewBoard):-
+    board(Board),
 	rotateRight(Board, Temp1),
 	moveLeft(Temp1, Temp2),
 	rotateLeft(Temp2, NewBoard).
 
 moveRight(Board, NewBoard):-
+    board(Board),
 	rotateLeft(Board, Temp1),
 	rotateLeft(Temp1, Temp2),
 	moveLeft(Temp2, Temp3),
@@ -379,6 +398,13 @@ moveLeft([X1,X2,X3,X4|X], [N1,N2,N3,N4|N]) :-
 	N4 is X4,
 	moveLeft(X,N).
 
+addNew2(Board, NewBoard) :-
+    board(Board),
+	countZeros(Board, Z),
+	position(Z, P),
+	twoOrFour(N),
+	replaceZero(Board, P, N, NewBoard).
+
 addNew(Board, NewBoard) :-
 	countZeros(Board, Z),
 	position(Z, P),
@@ -454,3 +480,8 @@ printNumber(N) :-
 	write('    _').
 printNumber(N) :-
 	write('    '),write(N).
+
+
+pyLeft(Board, NewBoard) :-
+    board(Board),
+    once(moveLeft(Board, NewBoard)).
