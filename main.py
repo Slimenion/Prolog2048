@@ -59,58 +59,62 @@ def clicked3():
     refresh_table(check_lose_and_win)
 
 
+def clicked4():
+    pl.generate_board()
+
+
 window = tkinter.Tk()
 window.title("Добро пожаловать в игру 2048")
 lbl = tkinter.Label(window, text="2048", background=bg_color, font=('Arial', 28, 'bold'), width=4, fg=font_color)
 lbl.grid(row=0, column=2, columnspan=2)
-window.geometry('380x530+770+300')
+window.geometry('380x610+770+300')
 photo = tkinter.PhotoImage(file='2048_icon.png')
 window.iconphoto(False, photo)
 window.config(background=bg_color)
 
 
 
-for i in range(4):
-    for j in range(4):
-        tkinter.Label(window, text=f"-", background=button_color, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid").grid(row=i+1, column=j+1)
+# for i in range(4):
+#     for j in range(4):
+#         tkinter.Label(window, text=f"-", background=button_color, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid").grid(row=i+1, column=j+1)
 
 
 
 
-lbl1 = tkinter.Label(window, text="-", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid",)
+lbl1 = tkinter.Label(window, text=" ", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid",)
 lbl1.grid(row=1, column=1)
-lbl2 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl2 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl2.grid(row=1, column=2)
-lbl3 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl3 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl3.grid(row=1, column=3)
-lbl4 = tkinter.Label(window, text="-", width=3,  height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl4 = tkinter.Label(window, text=" ", width=3,  height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl4.grid(row=1, column=4)
 
-lbl5 = tkinter.Label(window, text="-", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid")
+lbl5 = tkinter.Label(window, text=" ", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid")
 lbl5.grid(row=2, column=1)
-lbl6 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl6 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl6.grid(row=2, column=2)
-lbl7 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl7 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl7.grid(row=2, column=3)
-lbl8 = tkinter.Label(window, text="-", width=3,  height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid" )
+lbl8 = tkinter.Label(window, text=" ", width=3,  height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid" )
 lbl8.grid(row=2, column=4)
 
-lbl9 = tkinter.Label(window, text="-", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid")
+lbl9 = tkinter.Label(window, text=" ", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid")
 lbl9.grid(row=3, column=1)
-lbl10 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl10 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl10.grid(row=3, column=2)
-lbl11 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl11 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl11.grid(row=3, column=3)
-lbl12 = tkinter.Label(window, text="-", width=3,  height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl12 = tkinter.Label(window, text=" ", width=3,  height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl12.grid(row=3, column=4)
 
-lbl13 = tkinter.Label(window, text="-", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid")
+lbl13 = tkinter.Label(window, text=" ", background=button_color, padx=15, pady=15, font=('Arial', 24, 'bold'), width=3, height=1, fg=font_color, borderwidth=4, relief="solid")
 lbl13.grid(row=4, column=1)
-lbl14 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl14 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl14.grid(row=4, column=2)
-lbl15 = tkinter.Label(window, text="-", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl15 = tkinter.Label(window, text=" ", width=3, height=1, padx=15, pady=15, background=button_color, font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl15.grid(row=4, column=3)
-lbl16 = tkinter.Label(window, text="-", width=3,  height=1, padx=15, pady=15, background='#BCAEA1', font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
+lbl16 = tkinter.Label(window, text=" ", width=3,  height=1, padx=15, pady=15, background='#BCAEA1', font=('Arial', 24, 'bold'), fg=font_color, borderwidth=4, relief="solid")
 lbl16.grid(row=4, column=4)
 
 btn = tkinter.Button(window, text="вверх ", command=clicked2, bg='#40CB9A', width=6,  height=1, font=('Arial', 16, 'bold'), pady=5, fg=font_color)
@@ -121,6 +125,10 @@ btn = tkinter.Button(window, text="вправо ", command=clicked1, bg='#40CB9A
 btn.grid(row=6, column=4, columnspan=3)
 btn = tkinter.Button(window, text="   вниз   ", command=clicked3, bg='#40CB9A', width=6,  height=1, font=('Arial', 16, 'bold'), pady=5, fg=font_color)
 btn.grid(row=7, column=2, columnspan=2)
+lbl17 = tkinter.Label(window, text=" ", width=3,  height=1, padx=15, pady=15, background=bg_color,)
+lbl17.grid(row=8, column=4, columnspan=4)
+btn = tkinter.Button(window, text="начать с начала", command=clicked4, bg='#40CB9A', width=13,  height=1, font=('Arial', 16, 'bold'), pady=4, fg=font_color)
+btn.grid(row=9, column=2, columnspan=2)
 
 
 window.mainloop()
