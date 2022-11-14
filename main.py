@@ -126,7 +126,7 @@ btn.grid(row=6, column=4, columnspan=3)
 btn = tkinter.Button(window, text="   вниз   ", command=clicked3, bg='#40CB9A', width=6,  height=1, font=('Arial', 16, 'bold'), pady=5, fg=font_color)
 btn.grid(row=7, column=2, columnspan=2)
 lbl17 = tkinter.Label(window, text=" ", width=3,  height=1, padx=15, pady=15, background=bg_color,)
-lbl17.grid(row=8, column=4, columnspan=4)
+lbl17.grid(row=8, column=4, columnspan=4,)
 btn = tkinter.Button(window, text="начать с начала", command=clicked4, bg='#40CB9A', width=13,  height=1, font=('Arial', 16, 'bold'), pady=4, fg=font_color)
 btn.grid(row=9, column=2, columnspan=2)
 
