@@ -3,8 +3,16 @@ prolog = Prolog()
 prolog.consult("2048.pl")
 board = list(prolog.query("generate(Board)."))[0]["Board"]
 prolog.asserta(f'board({board})')
+
+
 def generate_board():
+    global board
+    prolog.retractall('board(_)')
+    board = list(prolog.query("generate(Board)."))[0]["Board"]
+    prolog.asserta(f'board({board})')
     return board
+
+
 def move_up():
     global board
     prolog.retractall('board(_)')
@@ -19,6 +27,7 @@ def move_up():
     else:
         return check_quit
 
+
 def move_left():
     global board
     prolog.retractall('board(_)')
@@ -32,6 +41,8 @@ def move_left():
     else:
         update_desk()
         return True
+
+
 def move_right():
     global board
     prolog.retractall('board(_)')
@@ -45,6 +56,8 @@ def move_right():
     else:
         update_desk()
         return True
+
+
 def move_down():
     global board
     prolog.retractall('board(_)')
@@ -58,12 +71,16 @@ def move_down():
     else:
         update_desk()
         return True
+
+
 def update_desk():
     global board
     board = list(prolog.query("addNew2(Board, NewBoard)."))[0]["NewBoard"]
     prolog.retractall('board(_)')
     prolog.assertz(f'board({board})')
     return board
+
+
 def check_lose_or_win():
     global board
     prolog.retractall('board(_)')
